@@ -22,7 +22,7 @@ def about():
 
 @app.route('/results')
 def results():
-	gif_namey = 'gif_name'
+	gif_namey = print('gif_name')
 
 	g = giphypop.Giphy()
 	results = g.search_list('gif_name')
