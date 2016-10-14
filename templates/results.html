@@ -5,12 +5,13 @@
         <!-- Bootstrap 4 CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
     </head>
+    
     <body>
         
         <!-- Navigation Bar -->
         <nav class="navbar navbar-static-top navbar-dark bg-inverse">
             <div class="container">
-                <a class="navbar-brand" href="/">Python Project</a>
+                <a class="navbar-brand" href="/">IPP Final Project</a>
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
@@ -25,7 +26,18 @@
         <!-- Jumbotron -->
         <div class="jumbotron">
             <div class="container">
-                <h1>GIFs tagged with {{ gif_namey }}</h1>
+                
+                <!-- this if statement handles situations when the search terms produce no results-->
+                {% if not results %}
+
+                <h1>Apologies...Giphy has no GIFs tagged with the search term(s) {{ '"{}"'.format(gif_name) }}</h1>
+
+                {% else %}
+
+                <h1>GIFs tagged with {{ '"{}"'.format(gif_name) }}</h1>
+
+                {% endif %}
+
                 <a href="/">Back to search</a>
             </div>
         </div>
@@ -34,19 +46,26 @@
         <div class="container">
             <div class="card-columns">
             
+                <!-- Loops through the list of gif results created in the python file. Returns gif files and urls-->
+                {% for result in results %} 
 
-                <div class="card">
-                    {% for result in results %}
-                    <a href="{{result.url}}" target="_blank">
-                        <img class="card-img-top" src="{{result.media_url}}" style="width:100%; height:auto;">
-                    </a>
-                    {% endfor %}
-                </div>
-            
+                    <div class="card">   
+                        <a href="{{result.url}}" target="_blank">
+                            <img class="card-img-top" src="{{result.media_url}}" style="width:100%; height:auto;"> 
+                        </a>
+                    </div>
 
-            
+                {% endfor %}
+
+                
             </div>
-        </div>
+
+        <div class="container">
+            
+            <!-- Footer -->
+        <footer>
+            <p>© Karim Lahoud 2016</p>
+        </footer>
 
     </body>
 </html>

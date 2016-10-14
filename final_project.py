@@ -1,18 +1,14 @@
 from flask import Flask, render_template, request
 import giphypop
-
 import os
 
 app = Flask(__name__)
 
 
-
-
 @app.route('/')
 def index():
-	name = request.values.get('name', 'Nobody') #how does this work?? 
-	greeting = "Hello {}".format(name)
 	return render_template('index.html')  
+
 
 
 @app.route("/about")
@@ -22,20 +18,18 @@ def about():
 
 @app.route('/results')
 def results():
-	gif_namey = print('gif_name')
-
+	gif_name = request.values.get('gif_name')
 	g = giphypop.Giphy()
-	results = g.search_list('gif_name')
+	results = g.search_list(gif_name)
 
-	for result in results:
-		print(result.media_url)
-		print(result.url)
-	
-	return render_template('results.html')
+	return render_template('results.html', gif_name=gif_name, results=results)
 
 
 
-if __name__ == "__main__":  #is this line necessary?  guide on canvas does not mention it
+
+
+
+if __name__ == "__main__": 
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host="0.0.0.0", port=port)
 
@@ -43,4 +37,6 @@ if __name__ == "__main__":  #is this line necessary?  guide on canvas does not m
 
 
 
-#see the last email for grading scale to receive max points
+# To do list
+#1- Edit your README.md file so that it links to your newly created Heroku app page and push that to Github.
+#2- Add comments
