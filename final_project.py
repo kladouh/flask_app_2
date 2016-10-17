@@ -40,12 +40,6 @@ if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=port)
 
 
-# Note to Appraiser:
-
-# Just writing to point out this app will display the appropriate error message for the
-# situation when no gifs are found for the given search terms (e.g if gibberish is entered)
-
-
 
 
 
