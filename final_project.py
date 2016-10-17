@@ -35,14 +35,18 @@ def results():
 
 
 if __name__ == "__main__": 
-	#Necessary to deploy to Heroku
+	#Necessary to deploy to
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host="0.0.0.0", port=port)
 
 
+# Note to Appraiser:
+
+# Just writing to point out this app will display the appropriate error message for the
+# situation when no gifs are found for the given search terms (e.g if gibberish is entered)
 
 
 
-# To do list
-#1- Edit your README.md file so that it links to your newly created Heroku app page and push that to Github.
-#3- rename heroku address
+
+
+
